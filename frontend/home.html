@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <script src="js/core.js"></script>
+    <link rel="stylesheet" href="css/uni.css">
+</head>
+<body>
+    <h1>Welcome homie!!</h1>
+    <button id="btn_logout" onclick="logout()">logout</button>
+    <br><br>
+    <pre>sucess: <span id="success_counter"></span></pre>
+    <button id="btn_action" onclick="action()">action +1</button>
+</body>
+<script>
+    async function logout() {
+        btn_ui_behavior(btn_logout,true);
+
+        try {
+            const req = await fetch(logout_);
+            const res = await req.json();
+
+            if (res.success) {
+                window.location.href = login_page;
+                btn_ui_behavior(btn_logout,true);
+
+            } else {
+                alertErr("frontend error");
+            }
+        } catch (error) {
+            alertErr(error);
+        }
+    }
+
+    let counter = 0;
+
+    async function action() {
+        btn_ui_behavior(btn_action,true);
+
+        if(!permitted){
+            console.log("Action not Permitted");
+            return
+        }
+
+        try {
+            const req = await fetch(action_);
+            const res = await req.json();
+
+            if (res.success) {
+                counter ++;
+                success_counter.innerText = counter;
+                btn_ui_behavior(btn_action,false);
+
+            } else {
+                console.log(res.message);
+                permitted = false;
+            }
+        } catch (error) {
+            alertErr(error);
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>...</title>
+    <style>
+        button{
+            background-color: #2d56ae;
+            border: none;
+            color: white;
+            padding: 7px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 2em;
+            font-family: monospace;
+        }
+        button:disabled {
+            background-color: #ccc;
+            color: #666;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+        div {
+            margin: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <pre>php ver: <b><span id="txt_status">...</span></b></pre>
+        <pre>database: <b><span id="txt_db_status">...</span></b></pre>
+        <pre>db ip: <b><span id="txt_db_ip">...</span></b></pre>
+    </div>
+    <button disabled id="btn_continue">continue</button>
+    <div
+    style="
+        margin-top: 1em;
+        border: solid;
+        border-radius: 1em;
+        padding: 1em;
+        ">
+        <pre><b>-- TOOLS --</b></pre>
+        <button onclick="javascript:window.location.href='tools/hasher.html'">hasher</button>
+    </div>
+</body>
+<script>
+
+    //check if php and database  are online and get db ip
+    window.onload = function() {
+        fetch("backend/up.php")
+        .then(response => response.json())
+        .then(data => {
+            txt_status.innerText = data.status_php;
+            txt_db_status.innerText = data.status_db;
+            txt_db_ip.innerText = data.db_ip;
+            btn_continue.disabled = false;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            document.getElementById("txt_db_status").innerText = data.status_db;
+        });
+    };
+
+    //getting your public ip
+    fetch('https://api.ipify.org?format=json')
+    .then(res => res.json())
+    .then(data => {
+        console.log("User IP (public):", data.ip);
+    });
+
+    //btn continue action
+    document.getElementById("btn_continue").addEventListener("click",  () =>{
+    window.location.href = "frontend/login.html";
+    });
+    
+</script>
+</html>
