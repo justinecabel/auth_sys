@@ -49,10 +49,12 @@
     </div>
 </body>
 <script>
+    const isLocal = window.location.hostname === "localhost" || '127.0.0.1';
 
+    const backend_ = isLocal ? "" : "https://rhino-primary-fish.ngrok-free.app/";
     //check if php and database  are online and get db ip
     window.onload = function() {
-        fetch("backend/up.php")
+        fetch(backend_ + "backend/up.php")
         .then(response => response.json())
         .then(data => {
             txt_status.innerText = data.status_php;
