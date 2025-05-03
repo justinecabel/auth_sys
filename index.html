@@ -51,7 +51,7 @@
 <script>
     const isLocal = window.location.hostname === "localhost" || window.location.hostname === '127.0.0.1';
 
-    const backend_ = isLocal ? "" : "https://rhino-primary-fish.ngrok-free.app/";
+    const backend_ = isLocal ? "" : "https://rhino-primary-fish.ngrok-free.app/auth_system/";
     //check if php and database  are online and get db ip
     window.onload = function() {
         fetch(backend_ + "backend/up.php",{ 
