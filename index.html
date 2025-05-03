@@ -57,7 +57,7 @@
         .then(data => {
             txt_status.innerText = data.status_php;
             txt_db_status.innerText = data.status_db;
-            txt_db_ip.innerText = data.db_ip;
+            // txt_db_ip.innerText = data.db_ip;
             btn_continue.disabled = false;
         })
         .catch(error => {
@@ -67,11 +67,11 @@
     };
 
     //getting your public ip
-    fetch('https://api.ipify.org?format=json')
-    .then(res => res.json())
-    .then(data => {
-        console.log("User IP (public):", data.ip);
-    });
+    // fetch('https://api.ipify.org?format=json')
+    // .then(res => res.json())
+    // .then(data => {
+    //     console.log("User IP (public):", data.ip);
+    // });
 
     //btn continue action
     document.getElementById("btn_continue").addEventListener("click",  () =>{

@@ -1,4 +1,7 @@
-const backend_ = "../backend/";
+const isLocal = window.location.hostname === "localhost" || '127.0.0.1';
+
+const backend_ = isLocal ? "../backend/" : "https://rhino-primary-fish.ngrok-free.app";
+
 const login_ = backend_ + "login.php";
 const logout_ = backend_ + "logout.php";
 const action_ = backend_ + "action.php";
