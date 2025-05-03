@@ -20,7 +20,12 @@
         btn_ui_behavior(btn_logout,true);
 
         try {
-            const req = await fetch(logout_, header);
+            const req = await fetch(logout_, { 
+            headers: { 
+                'ngrok-skip-browser-warning': 'true',
+            },
+            credentials: "include",
+        });
             const res = await req.json();
 
             if (res.success) {
