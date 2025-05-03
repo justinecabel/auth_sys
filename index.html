@@ -49,7 +49,7 @@
     </div>
 </body>
 <script>
-    const isLocal = window.location.hostname === "localhost" || '127.0.0.1';
+    const isLocal = window.location.hostname === "localhost" || window.location.hostname === '127.0.0.1';
 
     const backend_ = isLocal ? "" : "https://rhino-primary-fish.ngrok-free.app/";
     //check if php and database  are online and get db ip
