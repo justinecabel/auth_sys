@@ -54,7 +54,9 @@
     const backend_ = isLocal ? "" : "https://rhino-primary-fish.ngrok-free.app/auth_system/";
     //check if php and database  are online and get db ip
     window.onload = function() {
-        fetch(backend_ + "backend/up.php")
+        fetch(backend_ + "backend/up.php",{ 
+            headers: { 'ngrok-skip-browser-warning': 'true' }
+        })
         .then(response => response.json())
         .then(data => {
             txt_status.innerText = data.status_php;
