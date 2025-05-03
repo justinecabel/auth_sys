@@ -15,11 +15,12 @@
     <button id="btn_action" onclick="action()">action +1</button>
 </body>
 <script>
+    
     async function logout() {
         btn_ui_behavior(btn_logout,true);
 
         try {
-            const req = await fetch(logout_);
+            const req = await fetch(logout_, header);
             const res = await req.json();
 
             if (res.success) {
@@ -45,7 +46,7 @@
         }
 
         try {
-            const req = await fetch(action_);
+            const req = await fetch(action_, header);
             const res = await req.json();
 
             if (res.success) {

@@ -14,7 +14,8 @@ async function run_auth(){
     const auth = await fetch(backend_+'auth_js.php', {
         method: 'GET',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'ngrok-skip-browser-warning': 'true'
         }
         });
     const logged_in = await auth.json(); 
@@ -48,3 +49,6 @@ function btn_ui_behavior(me,clicked){
         me.style.cursor = "pointer";
     }
 }
+
+const header = {headers: { 'ngrok-skip-browser-warning': 'true' }};
+
