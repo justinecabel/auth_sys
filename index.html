@@ -55,7 +55,8 @@
     //check if php and database  are online and get db ip
     window.onload = function() {
         fetch(backend_ + "backend/up.php",{ 
-            headers: { 'ngrok-skip-browser-warning': 'true'
+            headers: { 'ngrok-skip-browser-warning': 'true',
+                        'mode': 'cors'
 
             }
         })
