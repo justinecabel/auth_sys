@@ -51,5 +51,10 @@ function btn_ui_behavior(me,clicked){
     }
 }
 
-const header = {headers: { 'ngrok-skip-browser-warning': 'true' }};
+const header = {
+    headers: { 
+        'ngrok-skip-browser-warning': 'true'
+     },
+    credentials: "include",
+    };
 
