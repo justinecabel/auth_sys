@@ -84,11 +84,11 @@
 
         data = {
             method: 'POST',
-            withCredentials: true,
             headers: {
                 'Content-Type': 'application/json',
                 'ngrok-skip-browser-warning': 'true'
             },
+            credentials: "include",
             body: JSON.stringify({ user, password })
         }
 
