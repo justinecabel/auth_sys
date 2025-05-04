@@ -13,6 +13,7 @@ const page = window.location.pathname.split('/').pop();
 async function run_auth(){
     const auth = await fetch(backend_+'auth_js.php', {
         method: 'GET',
+        credentials : "include",
         headers: {
             'Content-Type': 'application/json',
             'ngrok-skip-browser-warning': 'true'
